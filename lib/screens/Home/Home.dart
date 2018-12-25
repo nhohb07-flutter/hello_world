@@ -23,25 +23,71 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        brightness: Brightness.dark,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+        child: (new SingleChildScrollView(
+          child: new Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+                colors: [
+                  Colors.green[100],
+                  Colors.green[300],
+                ],
+                begin: new FractionalOffset(0.0, 0.0),
+                end: new FractionalOffset(1.0, 1.0),
+                stops: [0.0, 1.0],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            child: new Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 75),
+                  child: new Image(
+                    width: 250,
+                    height: 190,
+                    image: new AssetImage('assets/images/login_logo.png'),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(30),
+                  child: new TextField(
+                    autofocus: true,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Email address',
+                      icon: Icon(
+                        Icons.email,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 1,
+                  color: Colors.grey,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(30),
+                  child: new TextField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Password',
+                      icon: Icon(
+                        Icons.email,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+          ),
+        )),
       ),
     );
   }
